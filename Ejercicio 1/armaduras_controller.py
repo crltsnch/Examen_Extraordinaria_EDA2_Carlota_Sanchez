@@ -11,3 +11,9 @@ class ArmadurasController:
     def obtener_armadura(self, nombre):
         return self.armaduras.get(nombre)
     
+    def obtener_calificacion(self, nombre):
+        armadura = self.obtener_armadura(nombre)
+        if armadura:
+            return armadura.calificacion()
+        else:
+            return "Armadura no encontrada"    
