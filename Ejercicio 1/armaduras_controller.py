@@ -8,4 +8,6 @@ class ArmadurasController:
         armadura = Armadura(nombre, rango)
         self.armaduras[nombre] = armadura
     
+    def obtener_armadura(self, nombre):
+        return self.armaduras.get(nombre)
     
