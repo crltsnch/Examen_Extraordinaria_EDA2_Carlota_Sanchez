@@ -5,7 +5,7 @@ class TestArmadurasController(unittest.TestCase):
     def test_agregar_armadura(self):
         controller = ArmadurasController()
         controller.agregar_armadura("MK-8888", "Mark I")
-        controller.assertEqual(len(controller.armaduras), 1)
+        self.assertEqual(len(controller.armaduras), 1)
     
     def test_obtener_armadura_existente(self):
         controller = ArmadurasController()
@@ -31,5 +31,4 @@ class TestArmadurasController(unittest.TestCase):
         calificacion = controller.obtener_calificacion("MK-9999")
         self.assertEqual(calificacion, "Armadura no encontrada")
 
-if __name__ == "__main__":
-    unittest.main()
+

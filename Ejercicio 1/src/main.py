@@ -1,4 +1,4 @@
-from .armaduras_controller import ArmadurasController
+from armaduras_controller import ArmadurasController
 
 def main():
     controller = ArmadurasController()
@@ -17,6 +17,7 @@ def main():
 
     calificacion_markXLII = controller.obtener_calificacion("MK-8890")
     print(f"Calificacion de MK-8890: {calificacion_markXLII}")
+
 
 if __name__ == "__main__":
     main()
