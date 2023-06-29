@@ -1,5 +1,5 @@
 import unittest
-from src.armaduras import ArmadurasController
+from src.armaduras_controller import ArmadurasController
 
 class TestArmadurasController(unittest.TestCase):
     def test_agregar_armadura(self):
@@ -30,3 +30,6 @@ class TestArmadurasController(unittest.TestCase):
         controller = ArmadurasController()
         calificacion = controller.obtener_calificacion("MK-9999")
         self.assertEqual(calificacion, "Armadura no encontrada")
+
+if __name__ == "__main__":
+    unittest.main()
