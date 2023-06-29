@@ -1,4 +1,4 @@
-from .armaduras import Armadura
+from armaduras import Armadura
 
 class ArmadurasController:
     def __init__(self):
