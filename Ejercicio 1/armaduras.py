@@ -4,3 +4,12 @@ class Armadura:
         self.rango = rango
         print(f"Armadura {self.nombre} creada con éxito")
     
+    def calificacion(self):
+        if self.rango == "Mark I":
+            return "Baja"
+        elif self.rango == "Mark II":
+            return "Media"
+        elif self.rango == "Mark III":
+            return "Alta"
+        else:
+            return "Desconocida"
