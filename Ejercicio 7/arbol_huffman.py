@@ -13,3 +13,10 @@ def build_tree(freq):
         heapq.heappush(heap, [merged_node.frequency, merged_node])
     return heap[0][1]
 
+def generate_codes(root, current_code, codes):
+    if root.symbol:
+        codes[root.symbol] = current_code
+    else:
+        generate_codes(root.left, current_code + "0", codes)
+        generate_codes(root.right, current_code + "1", codes)
+    
