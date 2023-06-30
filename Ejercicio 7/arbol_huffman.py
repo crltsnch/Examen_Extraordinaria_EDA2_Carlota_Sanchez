@@ -2,7 +2,7 @@ import heapq
 from nodo import Node
 
 def build_tree(freq):
-    heap = [[weight, Node(char, wight)] for char, weight in freq.items()]
+    heap = [[weight, Node(char, weight)] for char, weight in freq.items()]
     heapq.heapify(heap)
     while len(heap) > 1:
         lo = heapq.heappop(heap)
@@ -26,3 +26,17 @@ def compress(message, freq):
     generate_codes(huff_tree, "", codes)
     encoded_message = "".join(codes[char] for char in message)
     return encoded_message
+
+def decompress(encoded_message, freq):
+    huff_tree = build_tree(freq)
+    decoded_message = ""
+    current_node = huff_tree
+    for bit in encoded_message:
+        if bit == "0":
+            current_node = current_node.left
+        else:
+            current_node = current_node.right
+        if current_node.symbol:
+            decoded_message += current_node.symbol
+            current_node = huff_tree
+    return decoded_message
