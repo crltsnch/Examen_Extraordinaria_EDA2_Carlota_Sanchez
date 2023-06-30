@@ -18,6 +18,5 @@ def main():
     calificacion_markXLII = controller.obtener_calificacion("MK-8890")
     print(f"Calificacion de MK-8890: {calificacion_markXLII}")
 
-
 if __name__ == "__main__":
     main()
