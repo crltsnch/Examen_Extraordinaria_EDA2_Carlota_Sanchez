@@ -1,5 +1,6 @@
 import unittest
-from src.armaduras_controller import ArmadurasController
+from ..src.armaduras_controller import ArmadurasController
+
 
 class TestArmadurasController(unittest.TestCase):
     def test_agregar_armadura(self):
