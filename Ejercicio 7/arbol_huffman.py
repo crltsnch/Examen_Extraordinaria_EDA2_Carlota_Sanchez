@@ -20,3 +20,9 @@ def generate_codes(root, current_code, codes):
         generate_codes(root.left, current_code + "0", codes)
         generate_codes(root.right, current_code + "1", codes)
     
+def compress(message, freq):
+    huff_tree = build_tree(freq)
+    codes = {}
+    generate_codes(huff_tree, "", codes)
+    encoded_message = "".join(codes[char] for char in message)
+    return encoded_message
