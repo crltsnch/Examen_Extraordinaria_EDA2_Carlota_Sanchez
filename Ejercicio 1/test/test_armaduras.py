@@ -31,4 +31,5 @@ class TestArmadurasController(unittest.TestCase):
         calificacion = controller.obtener_calificacion("MK-9999")
         self.assertEqual(calificacion, "Armadura no encontrada")
 
-
+if __name__ == "__main__":
+    unittest.main()
