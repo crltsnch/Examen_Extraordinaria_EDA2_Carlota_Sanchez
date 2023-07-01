@@ -10,13 +10,11 @@ def main():
     
     # Obtener calificación de armaduras
     calificacion_markI = controller.obtener_calificacion("MK-8888")
-    print(f"Calificacion de MK-8888: {calificacion_markI}")
-
     calificacion_markV = controller.obtener_calificacion("MK-8889")
-    print(f"Calificacion de MK-8889: {calificacion_markV}")
-
     calificacion_markXLII = controller.obtener_calificacion("MK-8890")
-    print(f"Calificacion de MK-8890: {calificacion_markXLII}")
+
+    for armadura in controller.armaduras.values():
+        print(armadura)
 
 if __name__ == "__main__":
     main()
