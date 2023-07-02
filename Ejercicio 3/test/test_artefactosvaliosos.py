@@ -1,5 +1,5 @@
 import unittest
-from src.artefactosvaliosos import ArtefactoValioso
+from ..src.artefactosvaliosos import ArtefactoValioso
 
 class TestArtefactosValiosos(unittest.TestCase):
     def test_mostrar_datos_ordenados(self):
