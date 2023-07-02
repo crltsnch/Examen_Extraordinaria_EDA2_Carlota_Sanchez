@@ -1,4 +1,4 @@
-class ArtefactosVAliosos:
+class ArtefactoVAlioso:
     def __init__(self, peso, nombre, precio, fecha_caducidad):
         self.peso = peso
         self.nombre = nombre
