@@ -8,3 +8,14 @@ def es_solucion(solucion, capacidad):
     else:
         return False
 
+def mochila(conjunto_candidatos, capacidad):
+    #Algoritmo voraz para resolver el problem
+    solucion = []
+    restante = capacidad
+    while conjunto_candidatos and not es_solucion(solucion, capacidad):
+        dato = conjunto_candidatos.pop()
+        if dato[1] <= restante:
+            solucion.append(dato)
+            restante = round(restante - dato[1], 2)
+    
+    return solucion
