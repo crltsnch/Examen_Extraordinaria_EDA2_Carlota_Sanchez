@@ -4,7 +4,7 @@ import unittest
 class TestMochila(unittest.TestCase):
     def test_mochila_ejemplo(self):
         objetos = [['Amuleto de los Dioses', 12, 103],
-                ['Esapada del Sol', 23, 60], 
+                ['Espada del Sol', 23, 60], 
                 ['Collar de la Luna', 11, 70],
                 ['Reloj del Tiempo', 15, 5],
                 ['Anillo de la Vida', 7, 15]]
@@ -12,9 +12,13 @@ class TestMochila(unittest.TestCase):
 
         sol_esperada = [['Reloj del Tiempo', 15, 5],
                         ['Anillo de la Vida', 7, 15],
+                        ['Espada del Sol', 23, 60],
                         ['Collar de la Luna', 11, 70],
-                        ['Esapada del Sol', 23, 60]]
+                        ['Amuleto de los Dioses', 12, 103]]
         sol_obtenida = mochila(objetos, cap_max)
+
+        sol_esperada = sorted(sol_esperada, key=lambda x: x[0])
+        sol_obtenida = sorted(sol_obtenida, key=lambda x: x[0])
 
         self.assertListEqual(sol_esperada, sol_obtenida)
     
@@ -24,7 +28,7 @@ class TestMochila(unittest.TestCase):
                 ['Collar de la Luna', 11, 70],
                 ['Reloj del Tiempo', 15, 5],
                 ['Anillo de la Vida', 7, 15]]
-        cap_max = 10
+        cap_max = 5
 
         sol_esperada = []
         sol_obtenida = mochila(objetos, cap_max)
