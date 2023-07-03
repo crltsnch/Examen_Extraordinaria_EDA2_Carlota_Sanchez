@@ -1,5 +1,5 @@
 import unittest
-from ..src.armaduras import Armadura
+from src.armaduras import Armadura
 
 class TestArmaduras(unittest.TestCase):
     def test_str_armaduras(self):
