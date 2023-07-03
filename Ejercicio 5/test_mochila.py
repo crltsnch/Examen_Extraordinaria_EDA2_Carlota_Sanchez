@@ -1,4 +1,4 @@
-import mochila
+from mochila import es_solucion, mochila
 import unittest
 
 class TestMochila(unittest.TestCase):
@@ -8,13 +8,15 @@ class TestMochila(unittest.TestCase):
                 ['Collar de la Luna', 11, 70],
                 ['Reloj del Tiempo', 15, 5],
                 ['Anillo de la Vida', 7, 15]]
-        
         cap_max = 100
 
-        sol_esperada = [['Amuleto de los Dioses', 12, 103],
-                        ['Collar de la Luna', 11, 70],
-                        ['Anillo de la Vida', 7, 15]]
+        sol_esperada = [['Anillo de la Vida', 7, 15, 2.14],
+                    ['Reloj del Tiempo', 15, 5, 0.33],
+                    ['Collar de la Luna', 11, 70, 6.36],
+                    ['Esapada del Sol', 23, 60, 2.61],
+                    ['Amuleto de los Dioses', 12, 103, 8.58]]
         sol_obtenida = mochila(objetos, cap_max)
+        sol_obtenida.sort(key=lambda x:x[0])
 
         self.assertEqual(sol_esperada, sol_obtenida)
     
@@ -24,7 +26,6 @@ class TestMochila(unittest.TestCase):
                 ['Collar de la Luna', 11, 70],
                 ['Reloj del Tiempo', 15, 5],
                 ['Anillo de la Vida', 7, 15]]
-        
         cap_max = 10
 
         sol_esperada = []
@@ -34,7 +35,6 @@ class TestMochila(unittest.TestCase):
     
     def test_mochila_un_objeto(self):
         objetos = [['Amuleto de los Dioses', 12, 103]]
-        
         cap_max = 20
 
         sol_esperada = [['Amuleto de los Dioses', 12, 103]]
@@ -43,4 +43,13 @@ class TestMochila(unittest.TestCase):
         self.assertEqual(sol_esperada, sol_obtenida)
     
     def test_mochila_vacia(self):
-        
+        objetos = []
+        cap_max = 100
+
+        sol_esperada = []
+        sol_obtenida = mochila(objetos, cap_max)
+
+        self.assertEqual(sol_esperada, sol_obtenida)
+
+if __name__ == "__main__":
+    unittest.main()
