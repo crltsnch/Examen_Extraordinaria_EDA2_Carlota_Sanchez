@@ -9,13 +9,13 @@ def es_solucion(solucion, capacidad):
         return False
 
 def mochila(conjunto_candidatos, capacidad):
-    #Algoritmo voraz para resolver el problem
-    solucion = []
-    restante = capacidad
-    while conjunto_candidatos and restante >= 0:
-        dato = conjunto_candidatos.pop()
-        if dato[1] <= restante:
-            solucion.append(dato)
-            restante -= dato[1]
-    
-    return solucion
+    #Algoritmo voraz para resolver el problema de la mochila
+	solucion = []
+	restante = capacidad
+	while conjunto_candidatos and not es_solucion(solucion, capacidad):
+		dato = conjunto_candidatos.pop()
+		if dato[1]<= restante:
+			solucion.append(dato)
+			restante = round(restante-dato[1], 2)
+                        
+	return solucion
