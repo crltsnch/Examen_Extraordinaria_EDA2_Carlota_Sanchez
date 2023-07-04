@@ -46,4 +46,9 @@ def obtener_armaduras_asalto(tabla_codigo):
     armaduras_asalto = []
     for armaduras in tabla_codigo.values():
         for armadura in armaduras:
+            if armadura[-3:] == '781':
+                armaduras_asalto.append(armadura)
     
+    return armaduras_asalto
+
+def 
