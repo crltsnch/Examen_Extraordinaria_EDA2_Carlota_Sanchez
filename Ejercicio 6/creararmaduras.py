@@ -6,13 +6,13 @@ def generar_codigo():
     digitos = random.randint(1000, 9999)
     return f'{legion}-{digitos}'
 
+
 #Generar 2000 armaduras
 def generar_armaduras():
     armaduras = []
     for i in range(2000):
         armadura = generar_armaduras()
         armaduras.append(armadura)
-    return armaduras
 
 
 #Crear las tablas hash encadenadas
@@ -34,6 +34,7 @@ def crear_tablas_hash(armaduras):
 
     return tabla_codigo, tabla_legion
 
+
 def eliminar_armadura_desertor(tabla_codigo, tabla_legion):
     if 'FN-2187' in tabla_legion.get('FN', []):
         tabla_legion['FN'].remove('FN-2187')
@@ -41,6 +42,7 @@ def eliminar_armadura_desertor(tabla_codigo, tabla_legion):
     codigo_hash = '187'
     if codigo_hash in tabla_codigo and 'FN-2187' in tabla_codigo[codigo_hash]:
         tabla_codigo[codigo_hash].remove('FN-2187')
+
 
 def obtener_armaduras_asalto(tabla_codigo):
     armaduras_asalto = []
@@ -51,6 +53,7 @@ def obtener_armaduras_asalto(tabla_codigo):
     
     return armaduras_asalto
 
+
 def obtener_armaduras_exploracion(tabla_codigo):
     armaduras_exploracion = []
     for armaduras in tabla_codigo.values():
@@ -59,3 +62,23 @@ def obtener_armaduras_exploracion(tabla_codigo):
                 armaduras_exploracion.append(armadura)
     
     return armaduras_exploracion
+
+
+def obtener_armaduras_ct(tabla_legion):
+    armaduras_ct = []
+    for armaduras in tabla_legion.values():
+        for armadura in armaduras:
+            if armadura[:2] == 'CT':
+                armaduras_ct.append(armadura)
+    
+    return armaduras_ct
+
+
+def obtener_armaduras_tf(tabla_legion):
+    armaduras_tf = []
+    for armaduras in tabla_legion.values():
+        for armadura in armaduras:
+            if armadura[:2] == 'TF':
+                armaduras_tf.append(armadura)
+    
+    return armaduras_tf
