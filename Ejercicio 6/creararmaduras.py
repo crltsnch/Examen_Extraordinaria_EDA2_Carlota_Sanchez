@@ -11,9 +11,9 @@ def generar_codigo():
 def generar_armaduras():
     armaduras = []
     for i in range(2000):
-        armadura = generar_armaduras()
+        armadura = generar_codigo()
         armaduras.append(armadura)
-
+    return armaduras
 
 #Crear las tablas hash encadenadas
 def crear_tablas_hash(armaduras):
