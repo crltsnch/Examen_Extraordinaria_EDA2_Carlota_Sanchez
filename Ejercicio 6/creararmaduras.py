@@ -51,4 +51,11 @@ def obtener_armaduras_asalto(tabla_codigo):
     
     return armaduras_asalto
 
-def 
+def obtener_armaduras_exploracion(tabla_codigo):
+    armaduras_exploracion = []
+    for armaduras in tabla_codigo.values():
+        for armadura in armaduras:
+            if armadura[-3:] == '537':
+                armaduras_exploracion.append(armadura)
+    
+    return armaduras_exploracion
