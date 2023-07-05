@@ -10,17 +10,21 @@ class TestCrearArmaduras(unittest.TestCase):
         armaduras = generar_armaduras()
         tabla_codigo, tabla_legion = crear_tablas_hash(armaduras)
 
-        self.assertEqual(len(tabla_codigo.keys()), len(set(armaduras)))
-        self.assertEqual(len(tabla_legion.keys()), len(set(armaduras)))
-
         #Verificar que todos los elementos estén en las tablas
         for armadura in armaduras:
             codigo_hash = armadura[-3:]
             legion_hash = armadura[:2]
 
-            self.assertIn(armadura, tabla_codigo[codigo_hash])
-            self.assertIn(armadura, tabla_legion[legion_hash])
+            self.assertIn(armadura, tabla_codigo.get(codigo_hash, []))
+            self.assertIn(armadura, tabla_legion.get(legion_hash, []))
     
+        total_armaduras = len(armaduras)
+        total_codigos = sum(len(armaduras) for armaduras in tabla_codigo.values())
+        total_legiones = sum(len(armaduras) for armaduras in tabla_legion.values())
+
+        self.assertEqual(total_codigos, total_armaduras)
+        self.assertEqual(total_legiones, total_armaduras)
+
     def test_eliminar_armadura_desertor(self):
         armaduras = generar_armaduras()
         tabla_codigo, tabla_legion = crear_tablas_hash(armaduras)
@@ -39,8 +43,7 @@ class TestCrearArmaduras(unittest.TestCase):
 
         #Verificar que todas las armaduras de asalto terminan en '781'
         for armadura in armaduras_asalto:
-            codigo_hash = armaduras[-3:]
-            self.assertEqual(codigo_hash, '781')
+            self.assertTrue(armadura.endswith('781'))
     
     def test_obtener_armaduras_exploracion(self):
         armaduras = generar_armaduras()
@@ -48,10 +51,20 @@ class TestCrearArmaduras(unittest.TestCase):
 
         armaduras_exploracion = obtener_armaduras_exploracion(tabla_codigo)
 
-        #Verificar que todas las armaduras de exploración terminan en '501'
+        #Verificar que todas las armaduras de exploración terminan en '537'
         for armadura in armaduras_exploracion:
-            codigo_hash = armaduras[-3:]
-            self.assertEqual(codigo_hash, '537')
+            self.assertTrue(armadura.endswith('537'))
+
+    def test_obtener_armaduras_ct(self):
+        armaduras = generar_armaduras()
+        tabla_codigo, tabla_legion = crear_tablas_hash(armaduras)
+
+        armaduras_ct = obtener_armaduras_ct(tabla_legion)
+
+        #Verificar que todas las armaduras de la legión CT terminan en 'CT'
+        for armadura in armaduras_ct:
+            self.assertTrue(armadura.startswith('CT'))
+            
 
 if __name__ == "__main__":
     unittest.main()
