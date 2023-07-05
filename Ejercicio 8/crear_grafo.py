@@ -1,17 +1,17 @@
 from nodos import NodoArista, NodoVertice, Grafo, Arista
 import random
 
-def agregar_arista(grafo, origen, destino):
+def agregar_arista(grafo, origen, destino, costo):
     if grafo.inicio is None:
         grafo.inicio = NodoVertice(origen)
-        grafo.inicio.adyacentes.inicio = NodoArista(None, destino)
+        grafo.inicio.adyacentes.inicio = NodoArista(costo, destino)
     
     else:
         actual = grafo.inicio
         while actual.sig is not None:
             actual = actual.sig
         actual.sig = NodoVertice(origen)
-        actual.sig.adyacentes.inicio = NodoArista(None, destino)
+        actual.sig.adyacentes.inicio = NodoArista(costo, destino)
     
     grafo.tamanio += 1
 
@@ -21,7 +21,7 @@ def imprimir_grafo(grafo):
         print(f"Vertice: {actual.info}")
         arista_actual = actual.adyacentes.inicio
         while arista_actual is not None:
-            print(f"Arista: {arista_actual.info}")
+            print(f"Arista: {arista_actual.info} - Costo: {arista_actual.costo}")
             arista_actual = arista_actual.sig
         actual = actual.sig
 
@@ -40,7 +40,9 @@ def generar_grafo_planetas():
             destino = actual.info
             while destino == actual.info:
                 destino = random.choice(planetas)
-            agregar_arista(grafo, actual.info, destino)
-            agregar_arista(grafo, destino, actual.info)
-    
+
+            costo = random.randint(1, 10)
+            agregar_arista(grafo, actual.info, destino, costo)
+            agregar_arista(grafo, destino, actual.info, costo)
+  
     return grafo
