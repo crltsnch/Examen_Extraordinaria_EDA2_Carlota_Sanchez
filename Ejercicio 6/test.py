@@ -64,7 +64,16 @@ class TestCrearArmaduras(unittest.TestCase):
         #Verificar que todas las armaduras de la legión CT terminan en 'CT'
         for armadura in armaduras_ct:
             self.assertTrue(armadura.startswith('CT'))
-            
+
+    def test_obtener_armaduras_tf(self):
+        armaduras = generar_armaduras()
+        tabla_codigo, tabla_legion = crear_tablas_hash(armaduras)
+
+        armaduras_tf = obtener_armaduras_tf(tabla_legion)
+
+        #Verificar que todas las armaduras de la legión TF terminan en 'TF'
+        for armadura in armaduras_tf:
+            self.assertTrue(armadura.startswith('TF'))       
 
 if __name__ == "__main__":
     unittest.main()
