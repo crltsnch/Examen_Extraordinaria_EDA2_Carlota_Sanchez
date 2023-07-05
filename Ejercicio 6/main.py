@@ -1,4 +1,4 @@
-from creararmaduras import generar_armaduras, crear_tablas_hash, eliminar_armadura_desertor, obtener_armaduras_asalto, obtener_armaduras_exploracion, obtener_armaduras_ct, obtener_armaduras_tf
+from crear_armaduras import generar_armaduras, crear_tablas_hash, eliminar_armadura_desertor, obtener_armaduras_asalto, obtener_armaduras_exploracion, obtener_armaduras_ct, obtener_armaduras_tf
 
 def main():
     armaduras = generar_armaduras()
