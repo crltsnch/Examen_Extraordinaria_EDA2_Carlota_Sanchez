@@ -39,4 +39,19 @@ class TestCrearArmaduras(unittest.TestCase):
 
         #Verificar que todas las armaduras de asalto terminan en '781'
         for armadura in armaduras_asalto:
-            self.assertEqual()
+            codigo_hash = armaduras[-3:]
+            self.assertEqual(codigo_hash, '781')
+    
+    def test_obtener_armaduras_exploracion(self):
+        armaduras = generar_armaduras()
+        tabla_codigo, tabla_legion = crear_tablas_hash(armaduras)
+
+        armaduras_exploracion = obtener_armaduras_exploracion(tabla_codigo)
+
+        #Verificar que todas las armaduras de exploración terminan en '501'
+        for armadura in armaduras_exploracion:
+            codigo_hash = armaduras[-3:]
+            self.assertEqual(codigo_hash, '537')
+
+if __name__ == "__main__":
+    unittest.main()
