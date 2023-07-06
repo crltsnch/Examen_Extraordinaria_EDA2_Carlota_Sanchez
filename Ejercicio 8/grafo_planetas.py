@@ -15,6 +15,15 @@ def agregar_arista(grafo, origen, destino, costo):
     
     grafo.tamanio += 1
 
+def buscar_vertice(grafo, buscado):
+    aux = grafo.inicio
+    while aux is not None and aux.info != buscado:
+        aux = aux.sig
+    return aux
+
+def tamanio(grafo):
+    return grafo.tamanio
+
 def imprimir_grafo(grafo):
     actual = grafo.inicio
     while actual is not None:

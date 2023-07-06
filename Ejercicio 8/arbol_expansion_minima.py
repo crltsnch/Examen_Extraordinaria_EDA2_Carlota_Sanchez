@@ -1,14 +1,7 @@
 import sys
 from nodos import NodoArista, NodoVertice, Grafo, Arista
+from grafo_planetas import buscar_vertice, tamanio
 
-def buscar_vertice(grafo, buscado):
-    aux = grafo.inicio
-    while aux is not None and aux.info != buscado:
-        aux = aux.sig
-    return aux
-
-def tamanio(grafo):
-    return grafo.tamanio
 
 def obtener_arbol_expansion_minima(grafo):
     bosque = [[grafo.inicio.info]]
