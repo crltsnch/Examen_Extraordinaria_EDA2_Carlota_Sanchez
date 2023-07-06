@@ -41,4 +41,18 @@ class Heap:
             
             else:
                 break
-            
+                
+    def heap_vacio(self):
+        return len(self.heap) == 0
+    
+    def cambiar_prioridad(self, index, nueva_prioridad):
+        if index < 0 or index >= len(self.heap):
+            raise IndexError("Índice fuera de rango")
+        
+        elif nueva_prioridad < self.heap[index]:
+            self.heap[index] = nueva_prioridad
+            self._sift_up(index)
+        
+        elif nueva_prioridad > self.heap[index]:
+            self.heap[index] = nueva_prioridad
+            self._sift_down(index)

@@ -1,5 +1,4 @@
-from nodos import NodoArista, NodoVertice, Grafo, Arista
-from arbol_expansion_minima import tamanio
+from grafo_planetas import tamanio
 from heap import Heap
 from pila import Pila
 
