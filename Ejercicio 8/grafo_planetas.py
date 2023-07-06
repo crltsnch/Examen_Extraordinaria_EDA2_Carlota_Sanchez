@@ -15,6 +15,21 @@ def agregar_arista(grafo, origen, destino, costo):
     
     grafo.tamanio += 1
 
+def agregar_vertice(grafo, dato):
+    nodo = NodoVertice(dato)
+    if grafo.inicio is None or grafo.inicio.info > dato:
+        nodo.sig = grafo.inicio
+        grafo.inicio = nodo
+    else:
+        ant = grafo.inicio
+        act = grafo.inicio.sig
+        while act is not None and act.info < nodo.info:
+            ant = act
+            act = act.sig
+        nodo.sig = act
+        ant.sig = nodo
+    grafo.tamanio += 1
+
 def buscar_vertice(grafo, buscado):
     aux = grafo.inicio
     while aux is not None and aux.info != buscado:
@@ -39,22 +54,12 @@ def generar_grafo_planetas():
     planetas = ['Tierra', 'Knowhere', 'Zen-Whoberi', 'Vormir', 'Titán', 'Nidavellir', 'Planeta X', 'Sakaar', 'Asgard', 'Xandar', 'Geonosis', 'Utapau', 'Mustafar']
     
     for planeta in planetas:
-         agregar_arista(grafo, planeta, planeta, 0)
-         grafo.inicio = NodoVertice(planeta)
-         grafo.tamanio += 1
-        
-    for i in range(grafo.tamanio):
-        actual = grafo.inicio
-        for j in range(i):
-            actual = actual.sig
-        for k in range(4):
-            destino = actual.info
-            while destino == actual.info:
-                destino = random.choice(planetas)
+        grafo.agregar_vertice(planeta)
+    
+    for origen in planetas:
+        for destino in planetas:
+            if origen != destino:
+                grafo.agregar_arista(origen, destino, random.randint(1, 10))
 
-            costo = random.randint(1, 10)
-            agregar_arista(grafo, actual.info, destino, costo)
-            agregar_arista(grafo, destino, actual.info, costo)
-  
     return grafo
 
