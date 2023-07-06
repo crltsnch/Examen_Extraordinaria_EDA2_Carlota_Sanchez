@@ -7,6 +7,9 @@ def buscar_vertice(grafo, buscado):
         aux = aux.sig
     return aux
 
+def tamanio(grafo):
+    return grafo.tamanio
+
 def obtener_arbol_expansion_minima(grafo):
     bosque = [[grafo.inicio.info]]
     aristas = []
@@ -15,7 +18,7 @@ def obtener_arbol_expansion_minima(grafo):
         aristas.append([grafo.inicio.info, adyacentes.destino, adyacentes.info])
         adyacentes = adyacentes.sig
     
-    while (len(bosque[0])//2) < grafo.tamanio-1:
+    while (len(bosque[0])//2) < tamanio(grafo)-1:
         menor = sys.maxsize
         menor_arista = None
         tipo = None
