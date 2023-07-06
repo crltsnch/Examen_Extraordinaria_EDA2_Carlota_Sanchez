@@ -24,4 +24,3 @@ class Arista(object):
     #Clase arista
     def __init__(self):
         self.inicio = None
-        self.tamanio = 0

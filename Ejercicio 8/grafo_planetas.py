@@ -37,22 +37,19 @@ def imprimir_grafo(grafo):
 def generar_grafo_planetas():
     grafo = Grafo(dirigido = False)
     planetas = ['Tierra', 'Knowhere', 'Zen-Whoberi', 'Vormir', 'Titán', 'Nidavellir', 'Planeta X', 'Sakaar', 'Asgard', 'Xandar', 'Geonosis', 'Utapau', 'Mustafar']
-    for planeta in planetas:
-        grafo.inicio = NodoVertice(planeta)
-        grafo.tamanio += 1
     
-    for i in range(grafo.tamanio):
-        actual = grafo.inicio
-        for j in range(i):
-            actual = actual.sig
-        for k in range(4):
-            destino = actual.info
-            while destino == actual.info:
+    for planeta in planetas:
+         agregar_arista(grafo, planeta, planeta, 0)
+        
+    for origen in planetas:
+        for i in range(4):
+            destino = origen
+            while destino == origen:
                 destino = random.choice(planetas)
 
             costo = random.randint(1, 10)
-            agregar_arista(grafo, actual.info, destino, costo)
-            agregar_arista(grafo, destino, actual.info, costo)
+            agregar_arista(grafo, origen, destino, costo)
+            agregar_arista(grafo, destino, origen, costo)
   
     return grafo
 
