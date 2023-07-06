@@ -1,5 +1,11 @@
-from crear_grafo import *
+from grafo_planetas import *
 from nodos import NodoArista, NodoVertice, Grafo, Arista
+
+def buscar_vertice(grafo, buscado):
+    aux = grafo.inicio
+    while aux is not None and aux.info != buscado:
+        aux = aux.sig
+    return aux
 
 def obtener_arbol_expansion_minima(grafo):
     bosque = [[grafo.inicio.info]]
@@ -37,4 +43,3 @@ def obtener_arbol_expansion_minima(grafo):
     aux = None
     if tipo:
         aux = buscar_vertice(grafo, arista[0])
-        
