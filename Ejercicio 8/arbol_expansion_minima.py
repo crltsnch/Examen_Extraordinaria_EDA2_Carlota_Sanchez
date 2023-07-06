@@ -1,3 +1,4 @@
+import sys
 from grafo_planetas import *
 from nodos import NodoArista, NodoVertice, Grafo, Arista
 
@@ -10,13 +11,13 @@ def buscar_vertice(grafo, buscado):
 def obtener_arbol_expansion_minima(grafo):
     bosque = [[grafo.inicio.info]]
     aristas = []
-    adyacentes = grafo.inicio.adyacentes.info
+    adyacentes = grafo.inicio.adyacentes.inicio
     while adyacentes is not None:
         aristas.append([grafo.inicio.info, adyacentes.destino, adyacentes.info])
         adyacentes = adyacentes.sig
     
     while (len(bosque[0])//2) < grafo.tamanio-1:
-        menor = inf
+        menor = sys.maxsize
         menor_arista = None
         tipo = None
         for arista in aristas:
@@ -33,13 +34,20 @@ def obtener_arbol_expansion_minima(grafo):
                     menor, menor_arista = arista[2], arista
                     tipo = False
             
-    arista = aristas.pop(aristas.index(menor_arista))
-    if len(bosque[0]) != 1:
-        bosque[0] += [arista[0], arista[1]]
-    else:
-        bosque.pop()
-        bosque.append([arista[0], arista[1]])
+        arista = aristas.pop(aristas.index(menor_arista))
+        if len(bosque[0]) != 1:
+            bosque[0] += [arista[0], arista[1]]
+        else:
+            bosque.pop()
+            bosque.append([arista[0], arista[1]])
 
-    aux = None
-    if tipo:
-        aux = buscar_vertice(grafo, arista[0])
+        aux = None
+        if tipo:
+            aux = buscar_vertice(grafo, arista[0])
+
+        adyacentes = aux.adyacentes.inicio
+        while adyacentes is not None:
+            aristas.append([aux.info, adyacentes.destino, adyacentes.info])
+            adyacentes = adyacentes.sig
+    
+    return bosque
