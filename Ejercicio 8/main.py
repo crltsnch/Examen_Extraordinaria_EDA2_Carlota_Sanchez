@@ -17,24 +17,24 @@ def main():
         print(f"Arista: {arista[0]} - {arista[1]}") 
     print()
 
-    #Hallar el camino más corto entre dos planetas
-    print("Camino más corto: ")
-    origen_destino = [('Tierra', 'Vormir'), ('Knowhere', 'Titán'), ('Zen-Whoberi', 'Nidavellir')]
-    for i, (origen, destino) in enumerate(origen_destino, 1):
+    #Obtener camino más corto
+    origen_destino = [['Tierra', 'Vormir'], ['Knowhere', 'Titán'], ['Zen-Whoberi', 'Nidavellir']]
+    for i, [origen, destino] in enumerate(origen_destino, 1):
         camino = camino_mas_corto(grafo, origen, destino)
-        print(f"Camino {i}: ")
+        print(f"Camino más corto {i}: ")
         while not camino.pila_vacia():
             vertice = camino.desapilar()
             print(vertice.info)
         print()
-
-    #Determinar los planetas alcanzables desde Titán
-    print("Planetas alcanzables desde Titán: ")
+    
+    #Todos los planetas alcanzables desde Titán
     vertice_titan = buscar_vertice(grafo, 'Titán')
     vertices_alcanzables = obtener_vertices_alcanzables(grafo, vertice_titan)
+    print("Planetas alcanzables desde Titán: ")
     for vertice in vertices_alcanzables:
         print(vertice)
     print()
+
 
 if __name__ == "__main__":
     main()
