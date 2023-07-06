@@ -1,5 +1,4 @@
 import sys
-from grafo_planetas import *
 from nodos import NodoArista, NodoVertice, Grafo, Arista
 
 def buscar_vertice(grafo, buscado):
