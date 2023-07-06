@@ -15,6 +15,7 @@ def obtener_arbol_expansion_minima(grafo):
         menor = sys.maxsize
         menor_arista = None
         tipo = None
+
         for arista in aristas:
             origen = arista[0]
             destino = arista[1]
@@ -28,8 +29,12 @@ def obtener_arbol_expansion_minima(grafo):
                 if arista[2] < menor:
                     menor, menor_arista = arista[2], arista
                     tipo = False
-            
-        arista = aristas.pop(aristas.index(menor_arista))
+        
+        if menor_arista is None:
+            break
+
+        aristas.remove(menor_arista)
+
         if len(bosque[0]) != 1:
             bosque[0] += [arista[0], arista[1]]
         else:
@@ -46,3 +51,15 @@ def obtener_arbol_expansion_minima(grafo):
             adyacentes = adyacentes.sig
     
     return bosque
+
+def imprimir_arbol_expansion_minima(arbol):
+    if not arbol:
+        print("El árbol de expansión mínima está vacío.")
+        return
+    
+    print("Árbol de expansion mínima: ")
+    for arista in arbol:
+        if len(arista) >= 3:
+            print(f"Arista: {arista[0]} - {arista[1]}")
+        else:
+            print("Error: La arista no tiene el formato esperado.")
