@@ -17,6 +17,7 @@ def main():
         print(f"Arista: {arista[0]} - {arista[1]}") 
     print()
 
+   
     #Obtener camino más corto
     origen_destino = [['Tierra', 'Vormir'], ['Knowhere', 'Titán'], ['Zen-Whoberi', 'Nidavellir']]
     for i, [origen, destino] in enumerate(origen_destino, 1):
