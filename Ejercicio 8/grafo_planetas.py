@@ -30,7 +30,7 @@ def imprimir_grafo(grafo):
         print(f"Vertice: {actual.info}")
         arista_actual = actual.adyacentes.inicio
         while arista_actual is not None:
-            print(f"Arista: {arista_actual.info} - Costo: {arista_actual.costo}")
+            print(f"Arista: {arista_actual.info} ")
             arista_actual = arista_actual.sig
         actual = actual.sig
 
@@ -40,16 +40,21 @@ def generar_grafo_planetas():
     
     for planeta in planetas:
          agregar_arista(grafo, planeta, planeta, 0)
+         grafo.inicio = NodoVertice(planeta)
+         grafo.tamanio += 1
         
-    for origen in planetas:
-        for i in range(4):
-            destino = origen
-            while destino == origen:
+    for i in range(grafo.tamanio):
+        actual = grafo.inicio
+        for j in range(i):
+            actual = actual.sig
+        for k in range(4):
+            destino = actual.info
+            while destino == actual.info:
                 destino = random.choice(planetas)
 
             costo = random.randint(1, 10)
-            agregar_arista(grafo, origen, destino, costo)
-            agregar_arista(grafo, destino, origen, costo)
+            agregar_arista(grafo, actual.info, destino, costo)
+            agregar_arista(grafo, destino, actual.info, costo)
   
     return grafo
 
