@@ -14,6 +14,12 @@ class Heap:
                 index = parent
             else:
                 break
+
+    def buscar_h(self, elemento):
+        for i, dato in enumerate(self.heap):
+            if dato[0] == elemento:
+                return i
+        return -1
     
     def atencion_h(self):
         if len(self.heap) == 0:

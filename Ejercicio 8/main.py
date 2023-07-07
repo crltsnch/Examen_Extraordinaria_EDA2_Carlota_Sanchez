@@ -1,5 +1,5 @@
 from grafo_planetas import generar_grafo_planetas, imprimir_grafo, buscar_vertice, tamanio
-from arbol_expansion_minima import obtener_arbol_expansion_minima
+from arbol_expansion_minima import obtener_arbol_expansion_minima, imprimir_arbol_expansion_minima
 from camino_mas_corto import camino_mas_corto
 from vertices_accesibles import obtener_vertices_alcanzables
 
@@ -13,11 +13,9 @@ def main():
     #Obtener árbol de expansión mínima
     arbol = obtener_arbol_expansion_minima(grafo)
     print("Árbol de expansión mínima: ")
-    for arista in arbol:
-        print(f"Arista: {arista[0]} - {arista[1]}") 
+    imprimir_arbol_expansion_minima(arbol)
     print()
 
-   
     #Obtener camino más corto
     origen_destino = [['Tierra', 'Vormir'], ['Knowhere', 'Titán'], ['Zen-Whoberi', 'Nidavellir']]
     for i, [origen, destino] in enumerate(origen_destino, 1):

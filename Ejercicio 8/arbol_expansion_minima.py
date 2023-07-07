@@ -36,14 +36,14 @@ def obtener_arbol_expansion_minima(grafo):
         aristas.remove(menor_arista)
 
         if len(bosque[0]) != 1:
-            bosque[0] += [arista[0], arista[1]]
+            bosque[0] += [menor_arista[0], menor_arista[1]]
         else:
             bosque.pop()
-            bosque.append([arista[0], arista[1]])
+            bosque.append([menor_arista[0], menor_arista[1]])
 
         aux = None
         if tipo:
-            aux = buscar_vertice(grafo, arista[0])
+            aux = buscar_vertice(grafo, menor_arista[0])
 
         adyacentes = aux.adyacentes.inicio
         while adyacentes is not None:
