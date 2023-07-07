@@ -11,3 +11,5 @@ class Pila:
         
         return self.pila.pop()
     
+    def pila_vacia(self):
+        return len(self.pila) == 0
